@@ -34,9 +34,13 @@ public class AppTest
     {
         App.main(null);
         try {
-            assertEquals("Hello World!" + System.getProperty("line.separator"), outContent.toString());
+            String expectedOutput = "Hello World!" + System.getProperty("line.separator");
+            for (int i = 1; i <= 10; i++) {
+                expectedOutput += i + System.getProperty("line.separator");
+            }
+            assertEquals(expectedOutput, outContent.toString());
         } catch (AssertionError e) {
-            fail("\"message\" is not \"Hello World!\"");
+            fail("Output does not match expected format with loop from 1 to 10");
         }
     }
 
